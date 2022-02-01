@@ -1,0 +1,324 @@
+import React, { useState } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icons from 'react-native-vector-icons/FontAwesome5';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { height, width } from '../utility/Dimentions';
+
+import {
+    WelcomeBack,
+    SignUp,
+    ForgotPassword,
+    LoginOnbording,
+    HomeScreen,
+    MyProfile,
+    SearchScreen,
+    RadioButtonCom,
+} from './ImportIndex';
+import AtoZ_Radio from '../components/AtoZRadio';
+import Drowpdown from '../components/Drowpdown';
+import RangeSlider from '../components/RangeSlider';
+import test from '../test';
+import Search from '../components/Search';
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const AppStack = () => (
+    <Stack.Navigator
+    >
+        {/* <Stack.Screen name="Login" component={Login} /> */}
+        {/* <Stack.Screen name="Myds" component={Search} /> */}
+        <Stack.Screen
+            name="MyTabs"
+            component={MyTabs}
+            options={{
+                headerLeft: () => {
+                    return (
+                        <View style={{ backgroundColor: '#ffffff', alignItems: 'center', justifyContent: 'center', marginLeft: width * 0.05, borderRadius: 50 }}>
+                            <Icons
+                                style={{ margin: 5 }}
+                                name={"user-circle"}
+                                size={25}
+                                color={'#ab47bc'}
+                            />
+                        </View>
+                    )
+                },
+                headerRight: () => {
+                    return (
+                        <View style={{ backgroundColor: '#ffffff', alignItems: 'center', justifyContent: 'center', marginRight: width * 0.05, borderRadius: 50 }}>
+                            <Icons
+                                style={{ margin: 5 }}
+                                name={"user-circle"}
+                                size={25}
+                                color={'#ab47bc'}
+                            />
+                        </View>
+                    )
+                },
+                title: 'Book Warm',
+                headerTintColor: '#ffffff',
+                headerTitleAlign: 'center',
+                headerStyle: {
+                    backgroundColor: '#ab47bc'
+                },
+
+            }}
+
+        />
+        <Stack.Screen
+            name="LoginOnbording"
+            component={LoginOnbording}
+
+            options={{
+                title: 'Select App Language',
+                headerStyle: {
+                    backgroundColor: '#ab47bc'
+                }
+            }}
+        />
+        <Stack.Screen
+            name="WelcomeBack"
+            component={WelcomeBack}
+
+            screenOptions={{
+
+                headerShown: false,
+            }} />
+
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="MyProfile" component={MyProfile} />
+
+    </Stack.Navigator>
+);
+
+const TabSeacrch = () => (
+    <TouchableOpacity style={{
+        top: -35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'red',
+        height: 70,
+        width: 70,
+        borderRadius: 50
+    }} >
+
+    </TouchableOpacity>
+);
+
+const MyTabs = () => {
+    return (
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarStyle: { height: '13%' },
+            }}>
+            <Tab.Screen
+                name="HomeTab"
+                component={HomeScreen}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <View style={styles.iconContainer}>
+                                <Icons
+                                    name="home"
+                                    size={25}
+                                    color={focused ? '#790e8b' : '#df78ef'}
+                                />
+                                <Text
+                                    style={[
+                                        styles.tabText,
+                                        { color: focused ? '#790e8b' : '#df78ef' },
+                                    ]}>
+                                    Home
+                                </Text>
+                            </View>
+                            <View
+                                style={[
+                                    styles.bottomBar,
+                                    { backgroundColor: focused ? '#790e8b' : null },
+                                ]}
+                            />
+                        </View>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="HealthcareTab"
+                component={HomeScreen}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <View style={styles.iconContainer}>
+                                <Icons
+                                    name="book"
+                                    size={25}
+                                    color={focused ? '#790e8b' : '#df78ef'}
+                                />
+                                <Text
+                                    style={[
+                                        styles.tabText,
+                                        { color: focused ? '#790e8b' : '#df78ef' },
+                                    ]}>
+                                    Show Books
+                                </Text>
+                            </View>
+                            <View
+                                style={[
+                                    styles.bottomBar,
+                                    { backgroundColor: focused ? '#790e8b' : null },
+                                ]}
+                            />
+                        </View>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="HH"
+                component={MyProfile}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <View style={styles.searchContainer}>
+                                {/* <View style={styles.searchCricle}>
+                  <Icons
+                    name="search"
+                    size={25}
+                    color={focused ? '#790e8b' : '#df78ef'}
+                  />
+                </View> */}
+
+                                <Text
+                                    style={[
+                                        styles.tabText,
+                                        { color: focused ? '#790e8b' : '#df78ef' },
+                                    ]}>
+                                    Search
+                                </Text>
+                            </View>
+                            <View
+                                style={[
+                                    styles.bottomBar,
+                                    { backgroundColor: focused ? '#790e8b' : null },
+                                ]}
+                            />
+                        </View>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Search"
+                component={HomeScreen}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <View style={styles.iconContainer}>
+                                <Icons
+                                    name="sitemap"
+                                    size={25}
+                                    color={focused ? '#790e8b' : '#df78ef'}
+                                />
+                                <Text
+                                    style={[
+                                        styles.tabText,
+                                        { color: focused ? '#790e8b' : '#df78ef' },
+                                    ]}>
+                                    Publications
+                                </Text>
+                            </View>
+                            <View
+                                style={[
+                                    styles.bottomBar,
+                                    { backgroundColor: focused ? '#790e8b' : null },
+                                ]}
+                            />
+                        </View>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="MyProfileTab"
+                component={MyProfile}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <View style={styles.iconContainer}>
+                                <Icons
+                                    name="user-circle"
+                                    size={25}
+                                    color={focused ? '#790e8b' : '#df78ef'}
+                                />
+                                <Text
+                                    style={[
+                                        styles.tabText,
+                                        { color: focused ? '#790e8b' : '#df78ef' },
+                                    ]}>
+                                    My Profile
+                                </Text>
+                            </View>
+                            <View
+                                style={[
+                                    styles.bottomBar,
+                                    { backgroundColor: focused ? '#790e8b' : null },
+                                ]}
+                            />
+                        </View>
+                    ),
+                }}
+            />
+        </Tab.Navigator>
+    );
+};
+
+export default AppStack;
+
+const styles = StyleSheet.create({
+    tabText: {
+        fontSize: 12,
+    },
+    circle: {
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+        backgroundColor: 'red',
+    },
+    searchContain: {
+        top: -35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'red'
+    },
+    iconContainer: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    searchCricle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'green',
+        //marginTop: -30
+
+    },
+    searchContainer: {
+        //top: -23,
+        alignItems: 'center',
+        //justifyContent: 'center',
+        // backgroundColor: 'red'
+    },
+    bottomBar: {
+        //top: -23,
+        marginTop: 3,
+        height: 3,
+        borderRadius: 2,
+    },
+});
+
+
+
+
+
+
+

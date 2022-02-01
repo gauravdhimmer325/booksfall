@@ -1,0 +1,6 @@
+module Pods_Booksbee_BooksbeeTests {
+  umbrella header "Pods-Booksbee-BooksbeeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

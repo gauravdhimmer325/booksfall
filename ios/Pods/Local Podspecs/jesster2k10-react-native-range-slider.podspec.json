@@ -1,0 +1,21 @@
+{
+  "name": "jesster2k10-react-native-range-slider",
+  "version": "0.3.1",
+  "summary": "React native cross platform range slider",
+  "homepage": "https://github.com/jesster2k10/react-native-range-slider/jesster2k10-react-native-range-slider#readme",
+  "license": "MIT",
+  "authors": "Jesse Onolememen <jesseono91@gmail.com> (https://github.com/jesster2k10/react-native-range-slider)",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/jesster2k10/react-native-range-slider/jesster2k10-react-native-range-slider.git",
+    "tag": "0.3.1"
+  },
+  "source_files": "ios/**/*.{h,m}",
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}

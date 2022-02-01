@@ -1,0 +1,6 @@
+module Pods_Booksbee {
+  umbrella header "Pods-Booksbee-umbrella.h"
+
+  export *
+  module * { export * }
+}
